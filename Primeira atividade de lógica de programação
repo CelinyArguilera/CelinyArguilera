@@ -1,0 +1,7 @@
+alert('Bem vindo ao jogo de números secretos');
+let numeroSecreto = 27;
+let chute = prompt('Escolha um número de 1 a 30');
+
+        if(numeroSecreto == chute) {
+            console.log (Isso, você acertou (27));
+        }
