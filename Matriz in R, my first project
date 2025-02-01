@@ -1,0 +1,36 @@
+# Criando uma matriz
+minha_matriz <- matrix(1:6, nrow = 2, ncol = 3)
+
+# Exibindo a matriz
+print(minha_matriz)
+
+
+# Criando minha matriz
+
+minha_matriz <- matrix(1:8, nrow = 6, ncol = 9)
+
+
+# Exibindo a danada
+print(minha matriz)
+
+
+
+
+# The growth tabele
+
+my_matrix <- matrix(1:10, nrow = 20, ncol = 30)
+
+
+# Show my tabele
+print(my_matrix)
+
+
+
+
+
+# The big matrix
+my_matrix <- matrix(40:200, nrow = 1000, ncol = 50000)
+
+# Show please
+print(my_matrix)
+
