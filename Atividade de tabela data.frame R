@@ -1,0 +1,33 @@
+# data.frame de exemplo 
+dados <- data.frame(
+cliente_id = c(101, 102, 103, 104, 105)
+nivel_satisfacao = c(3, 2, 1, 3, 2)
+)
+# Convertendo cliente_id em um factor nominal
+dados <- dados %>%
+mutate(cliente_id = factor (cliente_id))
+#Convertendo nivel_satisfacao em um factor com ordem 
+dados <- dados %>%
+mutate(nivel_satisfacao, factor(
+levels = c(1, 2, 3), 
+labels = c("Insatisfeito", "Neutro", "Satisfeito"))
+)
+dados %>%
+arrange (desc(nivel_satisfacao))
+
+
+
+
+# data.frame besties scientists
+dados <- data.frame (
+scientists_id = c("Marian Diammon", "Stephen Hawking", "Charles Richter", "Lin Margulis")
+nivel_favorito = c(1, 3, 2, 4)
+)
+# Convertendo scientists_id em um factor nominal
+dados <- dados %>%
+mutate(nivel_favorito, factor(nivel_favorito,
+levels = c(1, 2, 3, 4),
+labels = c("Meine Libe", "Ich liebe", "Liebe", "Love"))
+)
+dados %>%
+arrange (desc(as.numeric(nivel_favorito)))
