@@ -1,0 +1,58 @@
+#X² morcego Nectarívoro e Frugívoro
+observado=c(91,395)
+qui.teste=chisq.test(observado)
+qui.teste
+qui.teste$expected
+Result:
+Chi-squared test for given probabilities
+
+data:  observado
+X-squared = 190.16, df = 1, p-value < 2.2e-16
+
+> qui.teste$expected
+[1] 243 243
+
+
+
+
+#X² generos de morcegos 
+> observado = c(18,165,119,96,5,37,1,27,8,27,8,7,1,1,1,1,1)
+> qui.teste=chisq.test(observado)
+> qui.teste
+
+	Chi-squared test for given probabilities
+
+data:  observado
+X-squared = 1231, df = 16, p-value < 2.2e-16
+
+> qui.teste$expected
+ [1] 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471
+
+
+
+#Tabela de correlação região e tipo de alimenração de morcegos
+> batfood <- matrix(c(28, 5, 13, 45, 0, 110, 0, 5, 238, 45),
++ nrow = 2,
++ byrow = TRUE)
+> #Nomear linhas e colunas
+> print(batfood)
+     [,1] [,2] [,3] [,4] [,5]
+[1,]   28    5   13   45    0
+[2,]  110    0    5  238   45
+> rownames(batfood) <- c("Nectarívoro", "Frugívoro")
+> colnames(batfood) <- c("Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul")
+> #aplicar o teste qui-quadrado
+> teste <- chisq.test(batfood)
+Warning message:
+In chisq.test(batfood) : Aproximação do qui-quadrado pode estar incorreta
+> #Mostrar
+> print(teste)
+
+        Pearson's Chi-squared test
+
+data:  batfood
+X-squared = 67.944, df = 4, p-value = 6.165e-14
+
+> 
+
+> 
