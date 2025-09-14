@@ -22,6 +22,30 @@ X-squared = 190.16, df = 1, p-value < 2.2e-16
 
 	Chi-squared test for given probabilities
 
+
+
+#Media Nectarívoros
+numeros=[28,5,13,45,0]
+#calculando a media
+media=sum(numeros)/len(numeros)
+print(media)
+18.02
+#Media Nectarívoros
+numeros=[28,5,13,45,0]
+#calculando a media
+media=sum(numeros)/len(numeros)
+print(media)
+18.2
+
+
+
+#Media Frugívoro 
+numeros=[110, 0, 5, 238, 42]
+#calculando a media
+media=sum(numeros)/len(numeros)
+print(media)
+79.0
+
 data:  observado
 X-squared = 1231, df = 16, p-value < 2.2e-16
 
