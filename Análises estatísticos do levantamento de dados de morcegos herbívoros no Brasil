@@ -21,6 +21,12 @@ X-squared = 190.16, df = 1, p-value < 2.2e-16
 > qui.teste
 
 	Chi-squared test for given probabilities
+data:  observado
+X-squared = 1231, df = 16, p-value < 2.2e-16
+
+> qui.teste$expected
+ [1] 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471
+
 
 
 
@@ -46,11 +52,6 @@ media=sum(numeros)/len(numeros)
 print(media)
 79.0
 
-data:  observado
-X-squared = 1231, df = 16, p-value < 2.2e-16
-
-> qui.teste$expected
- [1] 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471 30.76471
 
 
 
