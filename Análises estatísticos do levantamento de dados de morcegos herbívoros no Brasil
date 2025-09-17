@@ -71,12 +71,12 @@ Warning message:
 In chisq.test(batfood) : Aproximação do qui-quadrado pode estar incorreta
 > #Mostrar
 > print(teste)
-
         Pearson's Chi-squared test
 
 data:  batfood
 X-squared = 67.944, df = 4, p-value = 6.165e-14
 
 > 
+
 
 > 
