@@ -111,3 +111,42 @@ a <- list_lsm()
 
 
 write.csv(metrics2001, file = "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\metrics2001.csv")
+
+
+
+#Métricas2006 BrasilMapBiomas 
+
+install.packages("landscapemetrics")
+install.packages("sf")
+install.packages("raster")
+library(landscapemetrics)
+library(raster)
+library(sf)
+nome<-read.csv(choose.files(), header=TRUE, sep=",") 
+mapa2006.tmp<-raster("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Recortado 2006.tif")
+plot(mapa2006.tmp)
+
+st_layers("C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/Reprojetado 2006 pontos.kml")
+
+
+
+pontos<-st_read("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Reprojetado 2006 pontos.kml")
+pontos<-st_transform(pontos, crs=st_crs(mapa2006.tmp))
+
+pontos$Name<-nome$Amostra
+pontos$Name<-nome$Amostra
+
+metrics2006 <- sample_lsm(
+  landscape = mapa2006.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+
+
+write.csv(metrics2006, "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Métricas 2006 BrasilMapBiomas.csv", row.names=FALSE)
+
+
