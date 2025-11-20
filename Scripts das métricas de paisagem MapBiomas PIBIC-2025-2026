@@ -1,0 +1,18 @@
+# Métricas 1997 Brasil MapBiomas 
+install.packages("landscapemetrics")
+install.packages("sf")
+install.packages("raster")
+library(landscapemetrics)
+library(raster) 
+library(sf)
+
+mapa1997.tmp<-raster("C:/Users/Celiny Arguilera/Downloads/brazil_coverage_1997albers.tif") 
+plot(mapa1997.tmp)
+points(pontos)
+
+pontos<-st_read("C:/Users/Celiny Arguilera/Downloads/Métrica de paisagem 1997.kml") 
+pontos = st_transform(pontos,CRS(projection(mapa1997.tmp)))
+check_landscape(mapa1997.tmp)
+
+metrics_b500m <- sample_lsm(mapa1997.tmp, y = pontos, plot_id = pontos$Name, shape="circle", size=1000, what = c("lsm_c_pland"),count_boundary = FALSE)
+a <- list_lsm()
