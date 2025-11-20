@@ -16,3 +16,98 @@ check_landscape(mapa1997.tmp)
 
 metrics_b500m <- sample_lsm(mapa1997.tmp, y = pontos, plot_id = pontos$Name, shape="circle", size=1000, what = c("lsm_c_pland"),count_boundary = FALSE)
 a <- list_lsm()
+
+
+# R Script 2001 Métricas de paisagem
+library(landscapemetrics)
+library(raster)
+library(sf)
+
+nome<-read.csv(choose.files(), header=TRUE, sep=";") 
+
+mapa2001.tmp<-raster("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Recortado 2001.tif")
+plot(mapa2001.tmp)
+
+pontos<-st_read("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Reprojetado 2001 pontos.kml")
+pontos<-st_transform(pontos, crs=st_crs(mapa2001.tmp))
+
+pontos$Name<-nome$Amostra
+pontos$Name<-nome$Amostra
+metrics2001 <- sample_lsm(
+  mapa02001.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+
+
+# R Script 2004 Métricas de paisagem
+library(landscapemetrics)
+library(raster)
+library(sf)
+
+nome<-read.csv(choose.files(), header=TRUE, sep=",") 
+
+mapa2004.tmp<-raster("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Recortado 2004.tif")
+plot(mapa2004.tmp)
+
+pontos<-st_read("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Reprojetado 2004 pontos.kml")
+pontos<-st_transform(pontos, crs=st_crs(mapa2004.tmp))
+
+pontos$Name<-nome$Amostra
+pontos$Name<-nome$Amostra
+metrics2004 <- sample_lsm(
+  mapa2004.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+write.csv(metrics2004, file = "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\metrics2004.csv")
+
+
+mapa2012.tmp<-raster("C:/Users/Celiny Arguilera/Downloads/brazil_coverage_2012reprojetesirgas.tif") 
+plot(mapa2012.tmp)
+points(pontos)
+
+pontos<-st_read("C:/Users/Celin.kml") 
+pontos = st_transform(pontos,CRS(projection(mapa2012.tmp)))
+check_landscape(mapa2012.tmp)
+
+metrics_b500m <- sample_lsm(mapa2012.tmp, y = pontos, plot_id = pontos$Name, shape="circle", size=1000, what = c("lsm_c_pland"),count_boundary = FALSE)
+a <- list_lsm()
+
+
+
+#Métricas 2012
+mapa2012.tmp<-raster("C:/Users/Celiny Arguilera/Downloads/brazil_coverage_1997reprojetesirgas.tif") 
+plot(mapa1997.tmp)
+points(pontos)
+
+pontos<-st_read("mapa2012.tmp<-raster("C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho\Arquivos TXT coordenadas") 
+plot(mapa1997.tmp)
+points(pontos)
+
+pontos<-st_read("C:/Users/Celiny Arguilera/Downloads/Métrica de paisagem 2012.kml") 
+pontos = st_transform(pontos,CRS(projection(mapa1997.tmp)))
+check_landscape(mapa2012.tmp)
+
+metrics_b500m <- sample_lsm(mapa1997.tmp, y = pontos, plot_id = pontos$Name, shape="circle", size=1000, what = c("lsm_c_pland"),count_boundary = FALSE)
+a <- list_lsm()
+") 
+pontos = st_transform(pontos,CRS(projection(mapa1997.tmp)))
+check_landscape(mapa1997.tmp)
+
+metrics_b500m <- sample_lsm(mapa1997.tmp, y = pontos, plot_id = pontos$Name, shape="circle", size=1000, what = c("lsm_c_pland"),count_boundary = FALSE)
+a <- list_lsm()
+
+
+
+
+
+write.csv(metrics2001, file = "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\metrics2001.csv")
