@@ -150,3 +150,29 @@ metrics2006 <- sample_lsm(
 write.csv(metrics2006, "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Métricas 2006 BrasilMapBiomas.csv", row.names=FALSE)
 
 
+
+# Script R 2005 Métricas 
+library(landscapemetrics)
+library(raster)
+library(sf)
+
+nome<-read.csv(choose.files(),header=TRUE, sep=",")
+mapa2005.tmp<-raster("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Recortado2005.tif")
+plot(mapa2005.tmp)
+
+pontos<-st_read("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Reprojetado pontos 2005.kml")
+pontos<-st_transform(pontos,crs=st_crs(mapa2005.tmp))
+pontos$Name<-nome$Amostra
+metrics2005 <- sample_lsm(
+  mapa2005.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+write.csv(metrics2005, file = "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\metrics2005.csv")
+
+
+
