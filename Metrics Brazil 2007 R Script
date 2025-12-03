@@ -1,0 +1,22 @@
+# Script R 2007 Métricas 
+library(landscapemetrics)
+library(raster)
+library(sf)
+
+nome<-read.csv(choose.files(),header=TRUE, sep=",")
+mapa2007.tmp<-raster("C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/Recortado 2007.tif")
+plot(mapa2007.tmp)
+
+pontos<-st_read("C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/Reprojetado 2007 coordenadas.kml")
+pontos<-st_transform(pontos,crs=st_crs(mapa2007.tmp))
+pontos$Name<-nome$Amostra
+metrics2007 <- sample_lsm(
+  mapa2007.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+write.csv(metrics2007, file = "C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/metrics2007.csv")
