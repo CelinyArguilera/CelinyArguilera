@@ -1,0 +1,21 @@
+library(landscapemetrics)
+library(raster)
+library(sf)
+
+nome<-read.csv(choose.files(),header=TRUE, sep=",")
+mapa2008.tmp<-raster("C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/Recortado 2008.tif")
+plot(mapa2008.tmp)
+
+pontos<-st_read("C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/Reprojetado 2008 Coordenadas.kml")
+pontos<-st_transform(pontos,crs=st_crs(mapa2008.tmp))
+pontos$Name<-nome$Amostra
+metrics2008 <- sample_lsm(
+  mapa2008.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+write.csv(metrics2008, file = "C:/Users/Celiny Arguilera/OneDrive/Área de Trabalho/Arquivos TXT coordenadas/metrics2008.csv")
