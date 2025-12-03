@@ -1,0 +1,22 @@
+# Script R 2004 Métricas 
+library(landscapemetrics)
+library(raster)
+library(sf)
+
+nome<-read.csv(choose.files(),header=TRUE, sep=",")
+mapa2004.tmp<-raster("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Recortado  certo 2004.tif")
+plot(mapa2004.tmp)
+
+pontos<-st_read("C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\Reprojetado pontos certo 2004.kml")
+pontos<-st_transform(pontos,crs=st_crs(mapa2004.tmp))
+pontos$Name<-nome$Amostra
+metrics2004 <- sample_lsm(
+  mapa2004.tmp,
+  y = pontos,
+  plot_id = pontos$Name,
+  shape = "circle",
+  size = 1000,
+  what = c("lsm_c_pland"),
+  count_boundary = FALSE
+)
+write.csv(metrics2005, file = "C:\\Users\\Celiny Arguilera\\OneDrive\\Área de Trabalho\\Arquivos TXT coordenadas\\metrics2004Corrigido.csv")
